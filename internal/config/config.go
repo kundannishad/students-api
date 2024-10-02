@@ -9,12 +9,14 @@ import (
 )
 
 type HTTPServer struct {
-	Addr string
+	Addr string `yaml:"address" env-required:"true"`
 }
 
+//env-default:"production"
+
 type Config struct {
-	Env         string `yml:"env" env:"ENV" env-required:"true" env-default:"production"`
-	StoragePath string `yml:"storage_path" env-required:"true"`
+	Env         string `yaml:"env" env:"ENV" env-required:"true" `
+	StoragePath string `yaml:"storage_path" env-required:"true"`
 	HTTPServer  `yaml:"http_server"`
 }
 
